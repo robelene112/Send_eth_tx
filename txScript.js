@@ -1,9 +1,12 @@
+// Imports
 const { ethers } = require("ethers");
 require("dotenv").config();
 
+// Constants
 const privateKey = process.env.PRIVATE_KEY;
 const rpcProvider = process.env.RPC_PROVIDER;
 
+// Function
 async function sendTransaction() {
   const provider = new ethers.providers.JsonRpcProvider(rpcProvider);
   const wallet = new ethers.Wallet(privateKey);
@@ -23,6 +26,7 @@ async function sendTransaction() {
   await connectedWallet.sendTransaction(tx);
 }
 
+// Calling the function with error handling
 sendTransaction()
   .then(() => process.exit(0))
   .catch((error) => {
