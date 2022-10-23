@@ -1,11 +1,12 @@
 const { ethers } = require("ethers");
 require("dotenv").config();
 
+const privateKey = process.env.PRIVATE_KEY;
+const rpcProvider = process.env.RPC_PROVIDER;
+
 async function sendTransaction() {
-  const provider = new ethers.providers.JsonRpcProvider(
-    process.env.RPC_PROVIDER
-  );
-  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY);
+  const provider = new ethers.providers.JsonRpcProvider(rpcProvider);
+  const wallet = new ethers.Wallet(privateKey);
   const connectedWallet = wallet.connect(provider);
 
   const gasPrice = 20000000000;
